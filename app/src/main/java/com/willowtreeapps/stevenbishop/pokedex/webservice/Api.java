@@ -1,6 +1,6 @@
 package com.willowtreeapps.stevenbishop.pokedex.webservice;
 
-import com.willowtreeapps.stevenbishop.pokedex.Pokedex;
+import com.willowtreeapps.stevenbishop.pokedex.models.Pokedex;
 
 import retrofit.Call;
 import retrofit.GsonConverterFactory;
