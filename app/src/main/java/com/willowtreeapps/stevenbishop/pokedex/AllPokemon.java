@@ -25,10 +25,9 @@ public class AllPokemon extends AppCompatActivity implements LoaderManager.Loade
 
         AllPokemonAdapter allPokemonAdapter = new AllPokemonAdapter();
         pokemonAdapter = allPokemonAdapter;
-
         recyclerView.setAdapter(allPokemonAdapter);
 
-        getSupportLoaderManager().initLoader(0, null, this).forceLoad();
+        getSupportLoaderManager().initLoader(0, null, this);
     }
 
     @Override
@@ -52,7 +51,5 @@ public class AllPokemon extends AppCompatActivity implements LoaderManager.Loade
     public void onLoaderReset(Loader<Pokedex> loader) {
 
     }
-
-
 
 }

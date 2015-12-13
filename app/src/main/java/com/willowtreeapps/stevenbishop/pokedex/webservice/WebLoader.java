@@ -26,4 +26,9 @@ public class WebLoader extends AsyncTaskLoader<Pokedex> {
         }
     }
 
+    @Override
+    protected void onStartLoading() {
+        super.onStartLoading();
+        forceLoad();
+    }
 }
