@@ -1,10 +1,12 @@
 package com.willowtreeapps.stevenbishop.pokedex.persistence;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import com.willowtreeapps.stevenbishop.pokedex.models.Pokemon;
 
 /**
  * Created by stevenbishop on 12/13/15.
@@ -24,7 +26,7 @@ public class PokemonDbHelper extends SQLiteOpenHelper {
     public static final String POKEMON_ROW_ID = PokemonContract.Pokemon.ID;
     public static final String POKEMON_ROW_NAME = PokemonContract.Pokemon.NAME;
     public static final String POKEMON_ROW_ATTACK = PokemonContract.Pokemon.ATTACK;
-    public static final String POKEMON_ROW_DEFENCE = PokemonContract.Pokemon.DEFENCE;
+    public static final String POKEMON_ROW_DEFENSE = PokemonContract.Pokemon.DEFENSE;
 
     //SQL statement to create the Pokemon table
     public static final String POKEMON_TABLE_CREATE =
@@ -32,7 +34,7 @@ public class PokemonDbHelper extends SQLiteOpenHelper {
             POKEMON_ROW_ID +
             POKEMON_ROW_NAME +
             POKEMON_ROW_ATTACK +
-            POKEMON_ROW_DEFENCE + " );";
+            POKEMON_ROW_DEFENSE + " );";
 
 
     public PokemonDbHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version, DatabaseErrorHandler errorHandler) {
@@ -49,5 +51,17 @@ public class PokemonDbHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + POKEMON_TABLE_CREATE);
         onCreate(db);
+    }
+
+    void insertPokemon(Pokemon pokemon) {
+        SQLiteDatabase database = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(POKEMON_ROW_NAME, pokemon.getName());
+        contentValues.put(POKEMON_ROW_ATTACK, pokemon.getAttack());
+        contentValues.put(POKEMON_ROW_DEFENSE, pokemon.getDefense());
+
+        database.insert(POKEMON_TABLE_NAME, null, contentValues);
+        database.close();
     }
 }

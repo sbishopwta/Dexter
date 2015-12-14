@@ -16,13 +16,13 @@ public class PokemonContract implements BaseColumns {
         public static final String ID = BaseColumns._ID;
         public static final String NAME = "name";
         public static final String ATTACK = "attack";
-        public static final String DEFENCE = "defence";
+        public static final String DEFENSE = "defense";
 
         //Define projection for Pokemon table
         public static final String[] PROJECTION = new String[] {
                     Pokemon.NAME,
                     Pokemon.ATTACK,
-                    Pokemon.DEFENCE
+                    Pokemon.DEFENSE
         };
     }
 }
