@@ -12,6 +12,8 @@ public class PokemonContract implements BaseColumns {
 
     public static final class Pokemon {
         //Define the table name
+        public static final String TABLE_NAME = "pokemon";
+        public static final String ID = BaseColumns._ID;
         public static final String NAME = "name";
         public static final String ATTACK = "attack";
         public static final String DEFENCE = "defence";
